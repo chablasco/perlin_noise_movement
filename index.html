@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CB Perlin Noise Movement Exploration</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    let t = 0; // Time variable for animating Perlin noise
+    let l = 0.001; // Noise factor
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      background(255); // White background
+    }
+
+    function draw() {
+      background(255); // Clear the screen to white every frame
+
+      // Generate multiple "microorganisms"
+      for (let i = 0; i < 900; i++) {
+        // Use Perlin noise to calculate positions
+        let x = width * noise(t + i * l); // Add a unique factor for each ellipse
+        let y = height * noise(t - i * l);
+
+        fill(0); // Set the fill color to black
+        noStroke();
+        ellipse(x, y, 40, 40); // Draw the ellipse
+      }
+
+      t += 0.004; // Increment the time variable for animation
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+    }
+  </script>
+</body>
+</html>
