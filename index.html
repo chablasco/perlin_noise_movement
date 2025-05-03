@@ -41,6 +41,10 @@
       t += 0.004; // Increment the time variable for animation
     }
 
+    function mousePressed() {
+    fullscreen(!fullscreen());
+    }
+
     function windowResized() {
       resizeCanvas(windowWidth, windowHeight);
     }
